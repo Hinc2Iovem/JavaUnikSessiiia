@@ -37,7 +37,7 @@ public class PrevExpensesController {
 
     @DeleteMapping(SINGLE_EXPENSE)
     public ResponseEntity<String> deletePrevExpense(
-            @PathVariable(name = "prevExpenseId") Long prevExpenseId
+            @RequestParam Long prevExpenseId
     ) {
         try {
             prevExpensesService.deletePrevExpense(prevExpenseId);
