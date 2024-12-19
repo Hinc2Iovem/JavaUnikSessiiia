@@ -33,8 +33,8 @@ public class ExpensesService {
     PrevExpensesRepository prevExpensesRepository;
 
     @Transactional(readOnly = true)
-    public List<ExpenseEntity> getExpenses(ExpenseFrequencyTypes type) {
-        if(type == null){
+    public List<ExpenseEntity> getExpenses(Optional<ExpenseFrequencyTypes> type) {
+        if(type.isEmpty()){
             return expensesRepository.streamAll().collect(Collectors.toList());
         }
         return expensesRepository.streamAllByType(type).collect(Collectors.toList());

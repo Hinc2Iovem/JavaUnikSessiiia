@@ -16,13 +16,17 @@ public class ExpensePrevDataEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(name = "prev_name", nullable = false)
     String prevName;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "prev_type", nullable = false)
     ExpenseFrequencyTypes prevType;
 
+    @Column(name = "prev_spent_amount", nullable = false)
     BigDecimal prevSpentAmount;
 
+    @Column(name = "prev_spent_at", nullable = false)
     Instant prevSpentAt;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

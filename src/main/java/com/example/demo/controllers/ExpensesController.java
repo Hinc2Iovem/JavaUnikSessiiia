@@ -27,7 +27,7 @@ public class ExpensesController {
     @GetMapping
     @Transactional(readOnly = true)
     public ResponseEntity<List<ExpenseEntity>> getExpenses(
-        @RequestParam ExpenseFrequencyTypes type
+        @RequestParam Optional<ExpenseFrequencyTypes> type
     )  throws BadRequestException {
         try {
             List<ExpenseEntity> expenses = expensesService.getExpenses(type);
@@ -67,6 +67,7 @@ public class ExpensesController {
             @RequestBody ExpenseEntity expenseBody
     ) throws BadRequestException {
         try {
+            System.out.print(expenseBody);
             ExpenseEntity expense = expensesService.createExpense(expenseBody);
             return ResponseEntity.ok().body(expense);
         } catch (Exception e) {

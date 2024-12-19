@@ -23,8 +23,10 @@ public class ExpenseEntity {
     @Enumerated(EnumType.STRING)
     ExpenseFrequencyTypes type;
 
+    @Column(name = "spent_amount", nullable = false)
     BigDecimal spentAmount;
 
+    @Column(name = "spent_at", nullable = false)
     Instant spentAt;
 
     @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL, orphanRemoval = true)
